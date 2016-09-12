@@ -1,6 +1,6 @@
 if has('gui_macvim')
   set showtabline=2    " タブを常に表示
-  set transparency=12   " 透明度
+  set transparency=10  " 透明度
 "  set transparency=0   " 透明度
   set imdisable        " IME OFF
   set guioptions-=T    " ツールバー非表示
@@ -21,7 +21,10 @@ if has('gui_macvim')
   " バックスペースでインデントや改行を削除
   set backspace=indent,eol,start
 
-  colorscheme molokai " カラースキーマ
+ " colorscheme jellybeans" カラースキーマ
+  "colorscheme molokai " カラースキーマ
+  "colorscheme hybrid " カラースキーマ
+  "colorscheme elflord " カラースキーマ
   "colorscheme railscasts " カラースキーマ
   "colorscheme koehler " カラースキーマ
   "colorscheme morning " カラースキーマ
@@ -31,8 +34,12 @@ if has('gui_macvim')
   set nowrapscan       " 検索をファイルの先頭へループしない
 
   " フォント設定
-  set guifontwide=SourceCodePro-Light:h16
-  set guifont=SourceCodePro-Light:h16
+  set guifontwide=SourceCodePro-Light:h20
+  set guifont=SourceCodePro-Light:h20
+  "set guifontwide=ゆたぽん（コーディング）:h22
+  "set guifont=ゆたぽん（コーディング）:h22
+  "set guifontwide=UnifontMedium:h22
+  "set guifont=UnifontMedium:h22
   "フォント設定プレゼン用
   "set guifontwide=SourceCodePro-Light:h24
   "set guifont=SourceCodePro-Light:h24
