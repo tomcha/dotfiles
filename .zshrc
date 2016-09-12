@@ -17,12 +17,12 @@ setopt correct
 setopt cdable_vars
 
 #キーバインド(vi or emacs)
-bindkey -v
+#bindkey -v
 
 # "bindkey"の第一引数は、任意のキー
 # viのキーバインドでインクリメンタルサーチを有効化
 #bindkey "^R" history-incremental-search-backward
-bindkey "^S" history-incremental-search-forward
+#bindkey "^S" history-incremental-search-forward
 
 # ヒストリをファイルに保存
 HISTFILE=~/.zhistory
@@ -66,27 +66,30 @@ PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
 esac
 
 #文字コード
-export LANG=ja_jp.UTF-8
+export LANG=ja_JP.UTF-8
 
 # ruby,perlのバージョン管理設定
 export PATH="$HOME/.plenv/bin:$PATH"
 eval "$(plenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
 # ターミナルからMacVimを起動する
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 #export PATH="/Applications/MacVim.app/Contents/MacOS/"
 alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
 #ターミナルからswiftを起動する
 export PATH=$PATH:/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
 #lsコマンドのエイリアス設定
 alias ls='ls -G'
 alias wget='curl -O'
 alias rm='rmtrash'
 
 #Perl6のエイリアス
-export PATH=~/.rakudobrew/bin:$PATH
+#export PATH=~/.rakudobrew/bin:$PATH
 
 #goのパス
 export GOROOT=/usr/local/opt/go/libexec
