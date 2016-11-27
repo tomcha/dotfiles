@@ -21,7 +21,7 @@ if has('gui_macvim')
   " バックスペースでインデントや改行を削除
   set backspace=indent,eol,start
 
- " colorscheme jellybeans" カラースキーマ
+  colorscheme jellybeans" カラースキーマ
   "colorscheme molokai " カラースキーマ
   "colorscheme hybrid " カラースキーマ
   "colorscheme elflord " カラースキーマ
@@ -34,8 +34,8 @@ if has('gui_macvim')
   set nowrapscan       " 検索をファイルの先頭へループしない
 
   " フォント設定
-  set guifontwide=SourceCodePro-Light:h20
-  set guifont=SourceCodePro-Light:h20
+  set guifontwide=SourceCodePro-Light:h18
+  set guifont=SourceCodePro-Light:h18
   "set guifontwide=ゆたぽん（コーディング）:h22
   "set guifont=ゆたぽん（コーディング）:h22
   "set guifontwide=UnifontMedium:h22

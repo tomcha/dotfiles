@@ -112,37 +112,37 @@ let g:previm_open_cmd = 'open -a Firefox'
 " Start Neobundle Settings.
 "---------------------------
 " bundleで管理するディレクトリを指定
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+"set runtimepath+=~/.vim/bundle/neobundle.vim/
  
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+"call neobundle#begin(expand('~/.vim/bundle/'))
 
 "NeoComplete(コード補完)
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1
  
 " neobundle自体をneobundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
+"NeoBundleFetch 'Shougo/neobundle.vim'
  
 " 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
 
 " NERDTreeを設定                  
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'mattn/emmet-vim' 
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'grep.vim'
-NeoBundle 'scrooloose/syntasric'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+"NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'mattn/emmet-vim' 
+"NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'grep.vim'
+"NeoBundle 'scrooloose/syntasric'
+"NeoBundle 'nathanaelkane/vim-indent-guides'
 " Markdown閲覧プラグイン
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'kannokanno/previm'
+"NeoBundle 'tyru/open-browser.vim'
+"NeoBundle 'kannokanno/previm'
 "カラースキーム
-NeoBundle 'jpo/vim-railscasts-theme'
-NeoBundle 'tomasr/molokai'
+"NeoBundle 'jpo/vim-railscasts-theme'
+"NeoBundle 'tomasr/molokai'
 "unite.vimの使用
-NeoBundle 'Shougo/unite.vim'
-call neobundle#end()
+"NeoBundle 'Shougo/unite.vim'
+"call neobundle#end()
 " Required:
-filetype plugin indent on
+"filetype plugin indent on
  
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
 " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
@@ -156,3 +156,49 @@ filetype plugin indent on
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+ 
+" Required:
+set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
+ 
+" Required:
+call dein#begin(expand('~/.vim/dein'))
+ 
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+ 
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+"Add from neobundle
+call dein#add('mattn/emmet-vim')
+call dein#add('thinca/vim-quickrun')
+call dein#add('grep.vim')
+call dein#add('nathanaelkane/vim-indent-guides')
+" Markdown閲覧プラグイン
+call dein#add('tyru/open-browser.vim')
+call dein#add('kannokanno/previm')
+"カラースキーム
+call dein#add('jpo/vim-railscasts-theme')
+call dein#add('tomasr/molokai')
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+" Mark.vim
+"call dein#add('sago35/mark.vim')
+
+" Required:
+call dein#end()
+ 
+" Required:
+filetype plugin indent on
+ 
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+ 
+"End dein Scripts-------------------------
