@@ -1,14 +1,33 @@
+"setting系
+"文字コードをutf-8に設定
 set encoding=utf-8
+"バックアップを作らない
+set nobackup
+"スワップファイルを作らない
+set noswapfile
+"編集中のファイルが変更されたら自動で読み直す
+set autoread
 "行末、行頭でのカーソル挙動
 set whichwrap=b,s,[,],<,>,~
 "マウスの無効化
 set mouse=
 "ノーマルモードへ戻る時のime自動無効化
 set imdisable
+"inoremap <ESC> <ESC>:set iminsert=0<CR>
+"inoremap <C-[> <C-[>:set iminsert=0<CR>
+"tabでタブ文字の代わりにスペースを使う
+set expandtab
+"tabキーを押した挙動 shiftwidth->行頭時の空白数 tabstop->それ以外時の空白数
+set smarttab
+set shiftwidth=2
+set tabstop=2
+"自動インデント
+set cindent
+"ダーク系カラースキーマ
 set background=dark
 "シンタックスハイライトと検索時の無効化
 syntax on
-"set nohlsearch
+"検索文字をハイライトする
 set hls
 
 highlight StatusLine ctermfg=black ctermbg=grey
@@ -25,6 +44,7 @@ set statusline=%F%r%h%=
 set number
 "ノーマルモードでの検索ON
 set incsearch
+"検索で大文字小文字を無視
 set ignorecase
 "コマンドモードでの補完ON
 set wildmenu wildmode=list:full
@@ -36,24 +56,24 @@ nmap <silent> <tab> 15<right>
 vmap <silent> <tab> <C-o>15<right>
 nmap <silent> <S-tab> 15<left>
 vmap <silent> <S-tab> 15<left>
-nmap <silent> <C-n> 	 :update<CR>:bn<CR>
-imap <silent> <C-n> <ESC>:update<CR>:bn<CR>
-vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
-cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+"nmap <silent> <C-n> 	 :update<CR>:bn<CR>
+"imap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+"vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+"cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+map <C-n> :NERDTreeToggle<CR>
 
-set smarttab
-set tabstop=2
-set expandtab
-set cindent
-set shiftwidth=2
 "colorscheme evening
-colorscheme jellybeans
+"colorscheme jellybeans
 "colorscheme molokai
+"colorscheme monokai
 "colorscheme hybrid
+"colorscheme desert 
 "colorscheme elflord
 "colorscheme railscast
 "colorscheme koehler
 "colorscheme morning
+"colorscheme monokai
+"colorscheme badwolf 
 inoremap <C-j> <C-[>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
@@ -152,6 +172,12 @@ let g:previm_open_cmd = 'open -a Firefox'
 " End Neobundle Settings.
 "-------------------------
 "
+"plantumlの生成スクリプト
+let g:plantuml_executable_script = "~/dotfiles/plantuml"
+
+let g:sonictemplate_vim_template_dir = [
+      \ '~/.vim/template'
+      \]
 "swiftのシンタックスプラグインの為
 execute pathogen#infect()
 syntax on
@@ -163,7 +189,9 @@ endif
  
 " Required:
 set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
- 
+"tree表示プラグインのコマンド設定
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Required:
 call dein#begin(expand('~/.vim/dein'))
  
@@ -185,11 +213,24 @@ call dein#add('kannokanno/previm')
 "カラースキーム
 call dein#add('jpo/vim-railscasts-theme')
 call dein#add('tomasr/molokai')
+"typescript Syntax
+call dein#add('leafgarland/typescript-vim')
 " You can specify revision/branch/tag.
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 " Mark.vim
 "call dein#add('sago35/mark.vim')
-
+"ツリー表示プラグイン
+call dein#add('scrooloose/nerdtree')
+"rubocop シンタックスチェック
+"call dein#add('vim-syntastic/syntastic')
+"let g:syntastic_ruby_checkers=['rubocop', 'mri']
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+"テンプレート選択プラグイン 
+call dein#add('mattn/sonictemplate-vim')
+"plantumlプラグイン
+call dein#add("aklt/plantuml-syntax")
+call dein#add('scrooloose/vim-slumlord')
+let g:plantuml_executable_script = "~/dotfiles/plantuml"
 " Required:
 call dein#end()
  

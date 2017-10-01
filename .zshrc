@@ -5,6 +5,9 @@ PROMPT="
  %{${fg[yellow]}%}%~%{${reset_color}%}
 [%n]$ "
 
+#PATH
+eval $(/usr/libexec/path_helper -s)
+export PATH="/usr/local/mysql/bin:$PATH"
 
 PROMPT2='[%n]> '
 
@@ -68,20 +71,25 @@ esac
 #文字コード
 export LANG=ja_JP.UTF-8
 
-# ruby,perlのバージョン管理設定
+
+# ruby,perl,pythonのバージョン管理設定
 export PATH="$HOME/.plenv/bin:$PATH"
 eval "$(plenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # ターミナルからMacVimを起動する
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 #export PATH="/Applications/MacVim.app/Contents/MacOS/"
-alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
+#alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
+alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/bin/mvim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 #ターミナルからswiftを起動する
-export PATH=$PATH:/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+export PATH="$PATH:/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
 
 #lsコマンドのエイリアス設定
 alias ls='ls -G'
@@ -94,7 +102,7 @@ alias rm='rmtrash'
 #goのパス
 export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
+export PATH="$PATH:$GOPATH/bin"
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 function peco-select-history() {
@@ -106,12 +114,12 @@ function peco-select-history() {
     fi
     BUFFER=$(\history -n 1 | \
         eval $tac | \
+        awk '!a[$0]++' |  \
         peco --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
 }
 zle -N peco-select-history
-bindkey '^r' peco-select-history
 
 #pcd(peco-cd)
 PECO_CD_FILE=$HOME/.peco/.peco-cd #お気に入りを記録するファイル
@@ -133,6 +141,10 @@ function pcd() {
     cd $(cat $PECO_CD_FILE | peco)
   fi
 }
+bindkey '^r' peco-select-history
+
+#mecab設定
+export PATH=/usr/local/mecab/bin:$PATH
 
 #hubコマンド
 #export PATH="~/bin:$PATH"
@@ -145,5 +157,6 @@ alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export PATH="$HOME/perl6/bin:$PATH"
+
