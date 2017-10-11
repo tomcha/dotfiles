@@ -29,7 +29,9 @@ set tabstop=2
 set expandtab
 set cindent
 set shiftwidth=2
-colorscheme koehler 
+"colorscheme koehler 
+"colorscheme jerrybeans
+colorscheme molokai
 inoremap <C-j> <C-[>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
