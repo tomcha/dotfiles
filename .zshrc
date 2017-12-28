@@ -151,7 +151,8 @@ export PATH=/usr/local/mecab/bin:$PATH
 #eval "$(hub alias -s)"
 
 #javascript core パス設定
-alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
+# alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
+export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
 #jslint用パス設定
 #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
 

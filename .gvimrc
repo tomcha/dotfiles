@@ -22,22 +22,22 @@ if has('gui_macvim')
   set shiftwidth=2
   " バックスペースでインデントや改行を削除
   set backspace=indent,eol,start
-
-  "colorscheme jellybeans"
-  "colorscheme monokai "
-  "colorscheme pixelmuerto
-  "colorscheme molokai "
-  "colorscheme hybrid "
-  "colorscheme desert "
-  "colorscheme solarized "
-  "colorscheme elflord "
-  "colorscheme railscasts "
-  "colorscheme koehler "
-  "colorscheme morning "
-  "colorscheme badwolf "
+  "colorscheme evening
+  "colorscheme jellybeans
+  "colorscheme molokai
+  "colorscheme pixelmerto
+  "colorscheme monokai
+  "colorscheme hybrid
+  "colorscheme desert
+  "colorscheme solarized
+  "colorscheme elflord
+  "colorscheme railscast
+  "colorscheme koehler
+  "colorscheme morning
+  "colorscheme badwolf
   colorscheme PaperColor
-  "colorscheme xedit " ライブコーディング用
-  "colorscheme monokai" カラースキーマ "デフォ
+  "colorscheme xedit"ライブコーディング用
+
   set columns=150      " 横幅
   set lines=50         " 行数
 

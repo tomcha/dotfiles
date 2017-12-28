@@ -15,14 +15,6 @@ set mouse=
 set imdisable
 "inoremap <ESC> <ESC>:set iminsert=0<CR>
 "inoremap <C-[> <C-[>:set iminsert=0<CR>
-"tabでタブ文字の代わりにスペースを使う
-set expandtab
-"tabキーを押した挙動 shiftwidth->行頭時の空白数 tabstop->それ以外時の空白数
-set smarttab
-set shiftwidth=2
-set tabstop=2
-"自動インデント
-set cindent
 "ダーク系カラースキーマ
 set background=dark
 "シンタックスハイライトと検索時の無効化
@@ -35,11 +27,41 @@ highlight CursorLine ctermfg=none ctermbg=darkgray cterm=none
 highlight MatchParen ctermfg=none ctermbg=darkgray
 highlight Comment ctermfg=DarkGreen ctermbg=NONE
 highlight Directory ctermfg=DarkGreen ctermbg=NONE
+" 256色対応
+set t_Co=256
+" OSのクリップボードを使う
+set clipboard=unnamed
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
+" 対応括弧をハイライト表示する
+set showmatch
+" 対応括弧の表示秒数を3秒にする
+set matchtime=3
+" 不可視文字を表示
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+" 行末1文字までカーソルを移動できるようにする
+set virtualedit=onemore
 "スクロール開始行の設定
 set scrolloff=15
+
 "ステータスラインの常時表示＆表示内容
 set laststatus=2
-set statusline=%F%r%h%=
+"set statusline=%F%r%h%=
+
+" for lightline.vim
+let g:lightline = {
+  \ 'colorscheme': 'PaperColor',
+  \ 'active': {
+  \   'left': [
+  \     ['mode', 'paste'],
+  \     ['readonly', 'filename', 'modified', 'anzu']
+  \   ]
+  \ },
+  \ 'component_function': {
+  \   'anzu': 'anzu#search_status'
+  \ }
+  \ }
 "行番号の表示
 set number
 "ノーマルモードでの検索ON
@@ -65,16 +87,22 @@ map <C-n> :NERDTreeToggle<CR>
 "colorscheme evening
 "colorscheme jellybeans
 "colorscheme molokai
+"colorscheme pixelmerto
 "colorscheme monokai
 "colorscheme hybrid
-"colorscheme desert 
+"colorscheme desert
+"colorscheme solarized
 "colorscheme elflord
 "colorscheme railscast
 "colorscheme koehler
 "colorscheme morning
-"colorscheme monokai
-"colorscheme badwolf 
+"colorscheme badwolf
+colorscheme PaperColor
+"colorscheme xedit"ライブコーディング用
+
 inoremap <C-j> <C-[>
+" 入力モード中に素早くjjと入力した場合はESCとみなす
+inoremap jj <Esc>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
 inoremap [] []<left>
@@ -171,7 +199,43 @@ let g:previm_open_cmd = 'open -a Firefox'
 "-------------------------
 " End Neobundle Settings.
 "-------------------------
-"
+
+"""""""""""""""""""""""""
+"      インデント
+""""""""""""""""""""""""
+set autoindent          "改行時に前の行のインデントを計測
+set smartindent         "改行時に入力された行の末尾に合わせて次の行のインデントを増減する 
+set cindent             "Cプログラムファイルの自動インデントを始める
+set smarttab            "新しい行を作った時に高度な自動インデントを行う
+set expandtab           "タブ入力を複数の空白に置き換える 
+
+set tabstop=4           "タブを含むファイルを開いた際, タブを何文字の空白に変換するか
+set shiftwidth=4        "自動インデントで入る空白数
+set softtabstop=0       "キーボードから入るタブの数
+
+if has("autocmd")
+  "ファイルタイプの検索を有効にする
+  filetype plugin on
+  "ファイルタイプに合わせたインデントを利用
+  filetype indent on
+  "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+  autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType perl        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType swift       setlocal sw=4 sts=4 ts=4 et
+endif
+
 "plantumlの生成スクリプト
 let g:plantuml_executable_script = "~/dotfiles/plantuml"
 
@@ -179,9 +243,9 @@ let g:sonictemplate_vim_template_dir = [
       \ '~/.vim/template'
       \]
 "swiftのシンタックスプラグインの為
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
+"execute pathogen#infect()
+"syntax on
+"filetype plugin indent on
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -192,6 +256,8 @@ set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 "tree表示プラグインのコマンド設定
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Required:
 call dein#begin(expand('~/.vim/dein'))
  
@@ -207,6 +273,8 @@ call dein#add('mattn/emmet-vim')
 call dein#add('thinca/vim-quickrun')
 call dein#add('grep.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
+" status line plugin
+call dein#add('itchyny/lightline.vim')
 " Markdown閲覧プラグイン
 call dein#add('tyru/open-browser.vim')
 call dein#add('kannokanno/previm')
@@ -221,6 +289,8 @@ call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 "call dein#add('sago35/mark.vim')
 "ツリー表示プラグイン
 call dein#add('scrooloose/nerdtree')
+"swift シンタックス
+call dein#add('toyamarinyon/vim-swift')
 "rubocop シンタックスチェック
 "call dein#add('vim-syntastic/syntastic')
 "let g:syntastic_ruby_checkers=['rubocop', 'mri']
