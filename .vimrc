@@ -301,6 +301,8 @@ call dein#add('mattn/sonictemplate-vim')
 call dein#add("aklt/plantuml-syntax")
 call dein#add('scrooloose/vim-slumlord')
 let g:plantuml_executable_script = "~/dotfiles/plantuml"
+"ruby 自動end入力プラグイン
+call dein#add("tpope/vim-endwise")
 " Required:
 call dein#end()
  
