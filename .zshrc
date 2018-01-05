@@ -160,4 +160,3 @@ export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export PATH="$HOME/perl6/bin:$PATH"
-
