@@ -102,7 +102,8 @@ colorscheme PaperColor
 
 inoremap <C-j> <C-[>
 " 入力モード中に素早くjjと入力した場合はESCとみなす
-inoremap jj <Esc>
+inoremap <silent> jj <C-[>
+inoremap <silent> っｊ <C-[>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
 inoremap [] []<left>
@@ -135,9 +136,9 @@ autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt
 " 拡張子cのファイルを作成した際に、.vim/template/c.txtテンプレートを読み込みます
 autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 
- set backupdir=~/tmp
- set directory=~/tmp
- set noundofile
+set backupdir=~/tmp
+set directory=~/tmp
+set noundofile
 
 " vim-indent-guides の設定
 " vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
