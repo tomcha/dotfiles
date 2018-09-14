@@ -6,7 +6,6 @@ PROMPT="
 [%n]$ "
 
 #PATH
-eval $(/usr/libexec/path_helper -s)
 export PATH="/usr/local/mysql/bin:$PATH"
 
 PROMPT2='[%n]> '
@@ -85,6 +84,8 @@ eval "$(pyenv init -)"
 case ${OSTYPE} in
   darwin*)
     # ここに Mac 向けの設定
+    #PATH
+    eval $(/usr/libexec/path_helper -s)
     # ターミナルからMacVimを起動する
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     #export PATH="/Applications/MacVim.app/Contents/MacOS/"
