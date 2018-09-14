@@ -4,7 +4,10 @@ if has('gui_macvim')
   set showtabline=2    " タブを常に表示
   set transparency=12 " 透明度
   " set transparency=0   " 透明度ライブコーディング用
-  set imdisable        " IME OFF
+
+"  set noimdisableactivate "自動的に日本語入力(IM)をオンにする
+"  set imdisable       " IME 自動ON/OFF をOFF
+
   set guioptions-=T    " ツールバー非表示
   set antialias        " アンチエイリアス
 "  set tabstop=4        " タブサイズ
@@ -22,22 +25,22 @@ if has('gui_macvim')
   set shiftwidth=2
   " バックスペースでインデントや改行を削除
   set backspace=indent,eol,start
-
-  "colorscheme jellybeans"
-  "colorscheme monokai "
-  "colorscheme pixelmuerto
-  "colorscheme molokai "
-  "colorscheme hybrid "
-  "colorscheme desert "
-  "colorscheme solarized "
-  "colorscheme elflord "
-  "colorscheme railscasts "
-  "colorscheme koehler "
-  "colorscheme morning "
-  "colorscheme badwolf "
+  "colorscheme evening
+  "colorscheme jellybeans
+  "colorscheme molokai
+  "colorscheme pixelmerto
+  "colorscheme monokai
+  "colorscheme hybrid
+  "colorscheme desert
+  "colorscheme solarized
+  "colorscheme elflord
+  "colorscheme railscast
+  "colorscheme koehler
+  "colorscheme morning
+  "colorscheme badwolf
   colorscheme PaperColor
-  "colorscheme xedit " ライブコーディング用
-  "colorscheme monokai" カラースキーマ "デフォ
+  "colorscheme xedit"ライブコーディング用
+
   set columns=150      " 横幅
   set lines=50         " 行数
 
@@ -46,14 +49,16 @@ if has('gui_macvim')
   " フォント設定
   "set guifontwide=SourceCodePro-ExtraLight:h18
   "set guifont=SourceCodePro-ExtraLight:h18
-  set guifontwide=SourceHanCodeJP-ExtraLight:h19  " デフォ
-  set guifont=SourceHanCodeJP-ExtraLight:h19        " デフォ
+"  set guifontwide=SourceHanCodeJP-ExtraLight:h19  " デフォ
+"  set guifont=SourceHanCodeJP-ExtraLight:h19        " デフォ
   "set guifontwide=SourceHanCodeJP-Medium:h17  " ライブコーディング用
   "set guifont=SourceHanCodeJP-Medium:h17      " ライブコーディング用
   "set guifontwide=SourceHanCodeJP-Light:h18
   "set guifont=SourceHanCodeJP-Light:h18
-  "set guifontwide=ゆたぽん（コーディング）:h22
-  "set guifont=ゆたぽん（コーディング）:h22
+  set guifontwide=ゆたぽん（コーディング）Backsl:h18
+  set guifont=ゆたぽん（コーディング）Backsl:h18
+  "set guifontwide=x8y12pxTheStrongGamer:h22
+  "set guifont=x8y12pxTheStrongGamer:h22
   "set guifontwide=UnifontMedium:h22
   "set guifont=UnifontMedium:h22
   "set guifontwide=migu-1m-regular:h24

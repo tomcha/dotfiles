@@ -6,7 +6,6 @@ PROMPT="
 [%n]$ "
 
 #PATH
-eval $(/usr/libexec/path_helper -s)
 export PATH="/usr/local/mysql/bin:$PATH"
 
 PROMPT2='[%n]> '
@@ -81,20 +80,40 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# ターミナルからMacVimを起動する
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-#export PATH="/Applications/MacVim.app/Contents/MacOS/"
-#alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
-alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/bin/mvim "$@"'
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+### macとlinuxの環境毎の設定
+case ${OSTYPE} in
+  darwin*)
+    # ここに Mac 向けの設定
+    #PATH
+    eval $(/usr/libexec/path_helper -s)
+    # ターミナルからMacVimを起動する
+    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+    #export PATH="/Applications/MacVim.app/Contents/MacOS/"
+    #alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
+    alias mvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/bin/mvim "$@"'
+    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-#ターミナルからswiftを起動する
-export PATH="$PATH:/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+    #ターミナルからswiftを起動する
+    export PATH="$PATH:/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+
+    #javascript core パス設定
+    # alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
+    export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
+    #jslint用パス設定
+    #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
+
+    #lsコマンドのエイリアス設定
+    alias rm='rmtrash'
+    ;;
+  linux*)
+    # ここに Linux 向けの設定
+    ;;
+esac
+
 
 #lsコマンドのエイリアス設定
 alias ls='ls -G'
 alias wget='curl -O'
-alias rm='rmtrash'
 
 #Perl6のエイリアス
 #export PATH=~/.rakudobrew/bin:$PATH
@@ -150,12 +169,9 @@ export PATH=/usr/local/mecab/bin:$PATH
 #export PATH="~/bin:$PATH"
 #eval "$(hub alias -s)"
 
-#javascript core パス設定
-alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
-#jslint用パス設定
-#alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export PATH="$HOME/perl6/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
