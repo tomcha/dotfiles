@@ -101,6 +101,9 @@ case ${OSTYPE} in
     export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
     #jslint用パス設定
     #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
+
+    #lsコマンドのエイリアス設定
+    alias rm='rmtrash'
     ;;
   linux*)
     # ここに Linux 向けの設定
@@ -111,7 +114,6 @@ esac
 #lsコマンドのエイリアス設定
 alias ls='ls -G'
 alias wget='curl -O'
-alias rm='rmtrash'
 
 #Perl6のエイリアス
 #export PATH=~/.rakudobrew/bin:$PATH
