@@ -272,7 +272,6 @@ call dein#add('Shougo/neosnippet-snippets')
 "Add from neobundle
 call dein#add('mattn/emmet-vim')
 call dein#add('thinca/vim-quickrun')
-call dein#add('grep.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
 " status line plugin
 call dein#add('itchyny/lightline.vim')

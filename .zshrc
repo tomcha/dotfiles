@@ -119,9 +119,17 @@ alias wget='curl -O'
 #export PATH=~/.rakudobrew/bin:$PATH
 
 #goのパス
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME
-export PATH="$PATH:$GOPATH/bin"
+case ${OSTYPE} in
+    darwin*)
+        export GOROOT=/usr/local/opt/go/libexec
+        export GOPATH=$HOME
+        export PATH="$PATH:$GOPATH/bin"
+        ;;
+    linux*)
+        # ここに Linux 向けの設定
+        export PATH=$PATH:/usr/local/go/bin
+        ;;
+esac
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 function peco-select-history() {
