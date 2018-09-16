@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use utf8;
+
+use Term::Encoding qw(term_encoding);
+use DDP { deparse => 1 };
+
+my $tenc = term_encoding;
+binmode STDIN,  ":encoding($tenc)";
+binmode STDOUT, ":encoding($tenc)";
+binmode STDERR, ":encoding($tenc)";
