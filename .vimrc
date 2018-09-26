@@ -139,6 +139,8 @@ autocmd BufNewFile *.html 0r $HOME/.vim/template/html.txt
 autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt
 " 拡張子cのファイルを作成した際に、.vim/template/c.txtテンプレートを読み込みます
 autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
+" 拡張子goのファイルを作成した際に、.vim/template/go.txtテンプレートを読み込みます
+autocmd BufNewFile *.go 0r $HOME/.vim/template/go.txt
 
 set backupdir=~/tmp
 set directory=~/tmp
@@ -276,7 +278,6 @@ call dein#add('Shougo/neosnippet-snippets')
 "Add from neobundle
 call dein#add('mattn/emmet-vim')
 call dein#add('thinca/vim-quickrun')
-call dein#add('grep.vim')
 call dein#add('nathanaelkane/vim-indent-guides')
 " status line plugin
 call dein#add('itchyny/lightline.vim')

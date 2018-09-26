@@ -6,7 +6,6 @@ PROMPT="
 [%n]$ "
 
 #PATH
-eval $(/usr/libexec/path_helper -s)
 export PATH="/usr/local/mysql/bin:$PATH"
 
 PROMPT2='[%n]> '
@@ -85,6 +84,8 @@ eval "$(pyenv init -)"
 case ${OSTYPE} in
   darwin*)
     # ここに Mac 向けの設定
+    #PATH
+    eval $(/usr/libexec/path_helper -s)
     # ターミナルからMacVimを起動する
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     #export PATH="/Applications/MacVim.app/Contents/MacOS/"
@@ -100,6 +101,9 @@ case ${OSTYPE} in
     export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
     #jslint用パス設定
     #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
+
+    #lsコマンドのエイリアス設定
+    alias rm='rmtrash'
     ;;
   linux*)
     # ここに Linux 向けの設定
@@ -110,15 +114,22 @@ esac
 #lsコマンドのエイリアス設定
 alias ls='ls -G'
 alias wget='curl -O'
-alias rm='rmtrash'
 
 #Perl6のエイリアス
 #export PATH=~/.rakudobrew/bin:$PATH
 
 #goのパス
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME
-export PATH="$PATH:$GOPATH/bin"
+case ${OSTYPE} in
+    darwin*)
+        export GOROOT=/usr/local/opt/go/libexec
+        export GOPATH=$HOME
+        export PATH="$PATH:$GOPATH/bin"
+        ;;
+    linux*)
+        # ここに Linux 向けの設定
+        export PATH=$PATH:/usr/local/go/bin
+        ;;
+esac
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 function peco-select-history() {
