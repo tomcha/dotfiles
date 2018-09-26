@@ -70,9 +70,13 @@ set incsearch
 set ignorecase
 "コマンドモードでの補完ON
 set wildmenu wildmode=list:full
-"インサートモードでのカーソルキー形状変化
+"インサートモードでのカーソルキー形状変化(Macのみ)
 let &t_SI = "\e]50;CursorShape=1\x7"
 let &t_EI = "\e]50;CursorShape=0\x7"
+" ノーマルモードではカーソル行を強調表示しない
+set nocursorline
+" インサートモードの時のみ、カーソル行をハイライトする
+autocmd InsertEnter,InsertLeave * set cursorline!
 "tabキーでの移動挙動
 nmap <silent> <tab> 15<right>
 vmap <silent> <tab> <C-o>15<right>
