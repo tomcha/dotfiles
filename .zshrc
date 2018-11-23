@@ -6,7 +6,9 @@ PROMPT="
 [%n]$ "
 
 #PATH
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
+
 
 PROMPT2='[%n]> '
 
@@ -85,7 +87,7 @@ case ${OSTYPE} in
   darwin*)
     # ここに Mac 向けの設定
     #PATH
-    eval $(/usr/libexec/path_helper -s)
+#-    eval $(/usr/libexec/path_helper -s)
     # ターミナルからMacVimを起動する
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     #export PATH="/Applications/MacVim.app/Contents/MacOS/"
@@ -98,7 +100,7 @@ case ${OSTYPE} in
 
     #javascript core パス設定
     # alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
-    export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
+#-    export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
     #jslint用パス設定
     #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
 
