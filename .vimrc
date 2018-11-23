@@ -91,7 +91,7 @@ map <C-n> :NERDTreeToggle<CR>
 "colorscheme evening
 "colorscheme jellybeans
 "colorscheme molokai
-"colorscheme pixelmerto
+"colorscheme pixelmuerto
 "colorscheme monokai
 "colorscheme hybrid
 "colorscheme desert
@@ -120,7 +120,7 @@ inoremap <Bar><Bar> <Bar><Bar><left>
 
 nnoremap <Space><Space>. :e $MYVIMRC<CR>
 nnoremap <Space><Space>.. :<C-u>source $MYVIMRC<CR>
-
+nnoremap <F1> :QuickRun<CR> 
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
