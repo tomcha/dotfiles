@@ -6,7 +6,9 @@ PROMPT="
 [%n]$ "
 
 #PATH
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
+
 
 PROMPT2='[%n]> '
 
@@ -17,7 +19,6 @@ setopt auto_pushd
 setopt auto_cd
 setopt correct
 setopt cdable_vars
-
 #キーバインド(vi or emacs)
 #bindkey -v
 
@@ -85,7 +86,7 @@ case ${OSTYPE} in
   darwin*)
     # ここに Mac 向けの設定
     #PATH
-    eval $(/usr/libexec/path_helper -s)
+#-    eval $(/usr/libexec/path_helper -s)
     # ターミナルからMacVimを起動する
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     #export PATH="/Applications/MacVim.app/Contents/MacOS/"
@@ -98,7 +99,7 @@ case ${OSTYPE} in
 
     #javascript core パス設定
     # alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc"
-    export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
+#-    export PATH="$PATH:/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources"
     #jslint用パス設定
     #alias jslint="$HOME/ljs/JSC_JSLINT_WRAPPER/jslint"
 
@@ -132,43 +133,44 @@ case ${OSTYPE} in
 esac
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        awk '!a[$0]++' |  \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-
-#pcd(peco-cd)
-PECO_CD_FILE=$HOME/.peco/.peco-cd #お気に入りを記録するファイル
-function pcd() {
-  if [ $1 ] && [ $1 = "add" ]; then
-    if [ $2 ]; then
-      ADD_DIR=$2
-      if [ $2 = "." ]; then
-        ADD_DIR=$(pwd) 
-      fi
-      echo "add $ADD_DIR to $PECO_CD_FILE"
-      echo $ADD_DIR >> $PECO_CD_FILE
-    fi
-  elif [ $1 ] && [ $1 = "edit" ]; then
-    if [ $EDITOR ]; then
-      $EDITOR $PECO_CD_FILE
-    fi
-  else
-    cd $(cat $PECO_CD_FILE | peco)
-  fi
-}
-bindkey '^r' peco-select-history
+### peco
+##function peco-select-history() {
+##    local tac
+##    if which tac > /dev/null; then
+##        tac="tac"
+##    else
+##        tac="tail -r"
+##    fi
+##    BUFFER=$(\history -n 1 | \
+##        eval $tac | \
+##        awk '!a[$0]++' |  \
+##        peco --query "$LBUFFER")
+##    CURSOR=$#BUFFER
+##    zle clear-screen
+##}
+##zle -N peco-select-history
+##
+###pcd(peco-cd)
+##PECO_CD_FILE=$HOME/.peco/.peco-cd #お気に入りを記録するファイル
+##function pcd() {
+##  if [ $1 ] && [ $1 = "add" ]; then
+##    if [ $2 ]; then
+##      ADD_DIR=$2
+##      if [ $2 = "." ]; then
+##        ADD_DIR=$(pwd) 
+##      fi
+##      echo "add $ADD_DIR to $PECO_CD_FILE"
+##      echo $ADD_DIR >> $PECO_CD_FILE
+##    fi
+##  elif [ $1 ] && [ $1 = "edit" ]; then
+##    if [ $EDITOR ]; then
+##      $EDITOR $PECO_CD_FILE
+##    fi
+##  else
+##    cd $(cat $PECO_CD_FILE | peco)
+##  fi
+##}
+##bindkey '^r' peco-select-history
 
 #mecab設定
 export PATH=/usr/local/mecab/bin:$PATH

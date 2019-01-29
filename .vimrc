@@ -10,7 +10,7 @@ set autoread
 "行末、行頭でのカーソル挙動
 set whichwrap=b,s,[,],<,>,~
 "マウスの無効化
-set mouse=
+set mouse-=a
 "ノーマルモードへ戻る時のime自動無効化
 set imdisable
 "inoremap <ESC> <ESC>:set iminsert=0<CR>
@@ -91,7 +91,7 @@ map <C-n> :NERDTreeToggle<CR>
 "colorscheme evening
 "colorscheme jellybeans
 "colorscheme molokai
-"colorscheme pixelmerto
+"colorscheme pixelmuerto
 "colorscheme monokai
 "colorscheme hybrid
 "colorscheme desert
@@ -120,7 +120,7 @@ inoremap <Bar><Bar> <Bar><Bar><left>
 
 nnoremap <Space><Space>. :e $MYVIMRC<CR>
 nnoremap <Space><Space>.. :<C-u>source $MYVIMRC<CR>
-
+nnoremap <F1> :QuickRun<CR> 
 "----------------------------------------------------
 " テンプレート補完
 "----------------------------------------------------
@@ -142,8 +142,8 @@ autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 " 拡張子goのファイルを作成した際に、.vim/template/go.txtテンプレートを読み込みます
 autocmd BufNewFile *.go 0r $HOME/.vim/template/go.txt
 
-set backupdir=~/tmp
-set directory=~/tmp
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
 set noundofile
 
 " vim-indent-guides の設定

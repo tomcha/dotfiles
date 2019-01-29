@@ -6,7 +6,7 @@ if has('gui_macvim')
   " set transparency=0   " 透明度ライブコーディング用
 
 "  set noimdisableactivate "自動的に日本語入力(IM)をオンにする
-"  set imdisable       " IME 自動ON/OFF をOFF
+  set imdisable       " IME 自動ON/OFF をOFF
 
   set guioptions-=T    " ツールバー非表示
   set antialias        " アンチエイリアス
@@ -41,8 +41,8 @@ if has('gui_macvim')
   colorscheme PaperColor
   "colorscheme xedit"ライブコーディング用
 
-  set columns=150      " 横幅
-  set lines=50         " 行数
+  set columns=180      " 横幅
+  set lines=51         " 行数
 
   set nowrapscan       " 検索をファイルの先頭へループしない
 
@@ -55,8 +55,8 @@ if has('gui_macvim')
   "set guifont=SourceHanCodeJP-Medium:h17      " ライブコーディング用
   "set guifontwide=SourceHanCodeJP-Light:h18
   "set guifont=SourceHanCodeJP-Light:h18
-  set guifontwide=ゆたぽん（コーディング）Backsl:h18
-  set guifont=ゆたぽん（コーディング）Backsl:h18
+  set guifontwide=ゆたぽん（コーディング）Backsl:h20
+  set guifont=ゆたぽん（コーディング）Backsl:h20
   "set guifontwide=x8y12pxTheStrongGamer:h22
   "set guifont=x8y12pxTheStrongGamer:h22
   "set guifontwide=UnifontMedium:h22
