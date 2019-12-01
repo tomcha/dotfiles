@@ -110,7 +110,7 @@ inoremap <silent> jj <C-[>
 inoremap <silent> っｊ <C-[>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
-inoremap [] []<left>
+"inoremap [] []<left>
 inoremap <> <><left>
 inoremap () ()<left>
 inoremap '' ''<left>
@@ -241,6 +241,7 @@ if has("autocmd")
   autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
   autocmd FileType swift       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
 endif
 
 "plantumlの生成スクリプト
@@ -309,6 +310,12 @@ call dein#add('scrooloose/vim-slumlord')
 let g:plantuml_executable_script = "~/dotfiles/plantuml"
 "ruby 自動end入力プラグイン
 call dein#add("tpope/vim-endwise")
+"多言語シンタックス、インデントプラグイン
+call dein#add("sheerun/vim-polyglot")
+"Go 自動formatter
+call dein#add("fatih/vim-go")
+"色付け
+call dein#add("inkarkat/vim-mark")
 " Required:
 call dein#end()
  
@@ -321,3 +328,14 @@ if dein#check_install()
 endif
  
 "End dein Scripts-------------------------
+"
+" *******************************************************
+" vim-go 
+" *******************************************************
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
