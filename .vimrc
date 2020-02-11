@@ -64,6 +64,8 @@ let g:lightline = {
   \ }
 "行番号の表示
 set number
+"カラースキームを読み込んだ後の設定
+autocmd ColorScheme * highlight LineNr ctermfg=208
 "ノーマルモードでの検索ON
 set incsearch
 "検索で大文字小文字を無視
@@ -140,7 +142,7 @@ autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt
 " 拡張子cのファイルを作成した際に、.vim/template/c.txtテンプレートを読み込みます
 autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 " 拡張子goのファイルを作成した際に、.vim/template/go.txtテンプレートを読み込みます
-autocmd BufNewFile *.go 0r $HOME/.vim/template/go.txt
+"autocmd BufNewFile *.go 0r $HOME/.vim/template/go.txt
 
 set backupdir=~/.vim/tmp
 set directory=~/.vim/tmp
@@ -163,6 +165,15 @@ let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 " Markdownの設定
 let g:previm_open_cmd = 'open -a Firefox'
+"terminal vim のかーそる形状
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
+    " ノーマルモード時に非点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[2 q"
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+endif
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
