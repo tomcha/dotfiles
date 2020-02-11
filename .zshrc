@@ -123,7 +123,7 @@ alias wget='curl -O'
 case ${OSTYPE} in
     darwin*)
         export GOROOT=/usr/local/opt/go/libexec
-        export GOPATH=$HOME
+        export GOPATH=$HOME/go #:$HOME/lgo
         export PATH="$PATH:$GOPATH/bin"
         ;;
     linux*)
@@ -134,6 +134,21 @@ esac
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 ### peco
+bindkey '^]' peco-src
+function peco-src() {
+    local src=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$src" ]; then
+        BUFFER="cd $src"
+        zle accept-line
+    fi
+    zle -R -c
+}
+zle -N peco-src
+
+function find_cd() {
+    cd "$(find . -type d | peco)"
+}
+alias fc="find_cd"
 ##function peco-select-history() {
 ##    local tac
 ##    if which tac > /dev/null; then
@@ -175,7 +190,8 @@ esac
 #mecab設定
 export PATH=/usr/local/mecab/bin:$PATH
 
-#hubコマンド
+#hub browserコマンド
+alias hbr='hub browse'
 #export PATH="~/bin:$PATH"
 #eval "$(hub alias -s)"
 
