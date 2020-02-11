@@ -1,2 +1,5 @@
 [ghq]
-	root = ~/codes
+	root = ~/codes/repository/
+[user]
+	name = tomcha
+	email = tomcha@tomcha.net
