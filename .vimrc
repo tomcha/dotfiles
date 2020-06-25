@@ -112,7 +112,7 @@ inoremap <silent> jj <C-[>
 inoremap <silent> っｊ <C-[>
 inoremap <C-k> <C-[><S-a>
 inoremap {} {}<left>
-"inoremap [] []<left>
+inoremap [] []<left>
 inoremap <> <><left>
 inoremap () ()<left>
 inoremap '' ''<left>
