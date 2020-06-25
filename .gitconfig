@@ -3,3 +3,5 @@
 [user]
 	name = tomcha
 	email = tomcha@tomcha.net
+[pull]
+	rebase = false
