@@ -1,7 +1,8 @@
 #プロンプト設定
 autoload colors; colors
 export LANG=ja_JP.UTF-8
-PROMPT=" %{${fg[yellow]}%}%~%{${reset_color}%}
+PROMPT="
+%{${fg[yellow]}%}%~%{${reset_color}%}
 [%n]$ "
 
 #PATH
@@ -201,20 +202,20 @@ export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export PATH="$HOME/perl6/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-# Git
-fpath=(~/.zsh $fpath)
-if [ -f ${HOME}/.zsh/git-completion.zsh ]; then
-       zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
-fi
-if [ -f ${HOME}/.zsh/git-prompt.sh ]; then
-       source ${HOME}/.zsh/git-prompt.sh
-fi
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUPSTREAM="auto"
-GIT_PS1_SHOWCOLORHINTS=true
-setopt PROMPT_SUBST ; PS1='
-%{${fg[green]}%}$(__git_ps1 " (%s)")
-%{${fg[yellow]}%}%~%{${reset_color}%}
-[%n]$ '
+#   # Git
+#   fpath=(~/.zsh $fpath)
+#   if [ -f ${HOME}/.zsh/git-completion.zsh ]; then
+#          zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
+#   fi
+#   if [ -f ${HOME}/.zsh/git-prompt.sh ]; then
+#          source ${HOME}/.zsh/git-prompt.sh
+#   fi
+#   GIT_PS1_SHOWDIRTYSTATE=true
+#   GIT_PS1_SHOWUNTRACKEDFILES=true
+#   GIT_PS1_SHOWSTASHSTATE=true
+#   GIT_PS1_SHOWUPSTREAM="auto"
+#   GIT_PS1_SHOWCOLORHINTS=true
+#   setopt PROMPT_SUBST ; PS1='
+#   %{${fg[green]}%}$(__git_ps1 " (%s)")
+#  %{${fg[yellow]}%}%~%{${reset_color}%}
+# [%n]$ '
