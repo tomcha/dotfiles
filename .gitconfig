@@ -5,3 +5,12 @@
 	email = tomcha@tomcha.net
 [pull]
 	rebase = false
+[alias]
+    graph  = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+    g = graph
+    r = checkout --
+    cop = !git checkout $(git branch --all | perl -pe 's/^..//, s/ .*//, s!^remotes/origin/!!' | sort | uniq | peco)
+    a = add .
+    c = commit -m
+    s = status
+    co = checkout
