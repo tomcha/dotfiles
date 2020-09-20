@@ -1,0 +1,48 @@
+"###セッティング系
+"行番号をつける
+set number
+"文字コードをUTF-8に指定
+set encoding=utf-8
+"タブを空白で入力する
+set expandtab
+"標準タブは4
+set tabstop=4
+set softtabstop=4
+"バックアップファイルを作らない
+set nobackup
+"スワップファイルを作らない
+set noswapfile
+"不可視文字を表示
+set list
+set listchars=tab:>-,extends:>,trail:~,eol:$,precedes:<
+"行末まで移動できるようにする
+set virtualedit=onemore
+"OSのクリップボードを使う
+set clipboard=unnamed
+"256色モードを使う
+set t_Co=256
+"対応カッコに<>を追加する
+set matchpairs+=<:>
+"インクリメントサーチをon
+set incsearch
+"サーチで大文字小文字を区別しない
+set ignorecase
+"編集中のファイルが変更されたら自動で読み直す
+set autoread
+
+"###カラースキーマ、フォント系
+colorscheme PaperColor
+  
+"###キーリマッピング系
+"インサートモードで、ctr + jでノーマルモードに戻る
+inoremap <C-j> <C-[>
+"インサートモードで、素早くjjでノーマルモードに戻る
+inoremap <silent> jj <C-[>
+inoremap <silent> っｊ <C-[>
+
+"###キー操作系
+"行 頭のカーソル移動で前後の行に移動できる様にする
+set whichwrap=b,s,h,l,<,>,[,],~
+"インサートモードでのカーソルキー形状変化(Macのみ)
+let &t_SI = "\e]50;CursorShape=1\x7"
+let &t_EI = "\e]50;CursorShape=0\x7"
