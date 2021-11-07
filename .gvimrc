@@ -38,7 +38,8 @@ if has('gui_macvim')
   "colorscheme koehler
   "colorscheme morning
   "colorscheme badwolf
-  colorscheme PaperColor
+  "
+  "colorscheme PaperColor
   "colorscheme xedit"ライブコーディング用
 
   set columns=180      " 横幅
