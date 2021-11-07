@@ -3,18 +3,15 @@
 set number
 "文字コードをUTF-8に指定
 set encoding=utf-8
-"タブを空白で入力する
-set expandtab
-"標準タブは4
-set tabstop=4
-set softtabstop=4
 "バックアップファイルを作らない
 set nobackup
 "スワップファイルを作らない
 set noswapfile
+"UNDOファイルを作らない
+set noundofile
 "不可視文字を表示
 set list
-set listchars=tab:>-,extends:>,trail:~,eol:$,precedes:<
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 "行末まで移動できるようにする
 set virtualedit=onemore
 "OSのクリップボードを使う
@@ -29,20 +26,148 @@ set incsearch
 set ignorecase
 "編集中のファイルが変更されたら自動で読み直す
 set autoread
+"マウスの無効化(マウス操作でvisualモードにならない様にする)
+set mouse-=a
+"検索時ヒット文字列をハイライトする
+set hlsearch
+
+"### vim-goコマンド自動実行
+"goファイル保存時にimportを自動補完してくれる
+let g:go_fmt_command = "goimports"
+"### autoprograming自動補完
+set completefunc=autoprogramming#complete
 
 "###カラースキーマ、フォント系
-colorscheme PaperColor
-  
+"シンタックスハイライト
+syntax on
+"検索文字をハイライトする
+set hls
+"colorscheme PaperColor
+"colorscheme molokai
+"ダーク系<->ライト系カラースキーマ切替
+set background=dark
+"set background=light
+" vim立ち上げたときに、自動的にvim-indent-guidesをオンにする
+let g:indent_guides_enable_on_vim_startup=1
+" ガイドをスタートするインデントの量
+let g:indent_guides_start_level=2
+" 自動カラーを無効にする
+let g:indent_guides_auto_colors=0
+" 奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+" 偶数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=darkgray
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent=30
+" ガイドの幅
+let g:indent_guides_guide_size=1
+
+"### インデント
+set autoindent          "改行時に前の行のインデントを計測
+set smartindent         "改行時に入力された行の末尾に合わせて次の行のインデントを増減する 
+set smarttab            "新しい行を作った時に高度な自動インデントを行う
+set expandtab           "タブ入力を複数の空白に置き換える
+set tabstop=4           "タブを含むファイルを開いた際, タブを何文字の空白に変換するか
+
+if has("autocmd")
+  "ファイルタイプの検索を有効にする
+  filetype plugin on
+  "ファイルタイプに合わせたインデントを利用
+  filetype indent on
+  "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
+  autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType ruby        setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType perl        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType js          setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType zsh         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType python      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scala       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType json        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType html        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType css         setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType scss        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType sass        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType javascript  setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType swift       setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType go          setlocal sw=4 sts=4 ts=4 et
+endif
+
 "###キーリマッピング系
 "インサートモードで、ctr + jでノーマルモードに戻る
 inoremap <C-j> <C-[>
+"インサートモードで、ctr + kで末尾へ移動する
+inoremap <C-k> <C-[><right><right><Insert>
 "インサートモードで、素早くjjでノーマルモードに戻る
 inoremap <silent> jj <C-[>
 inoremap <silent> っｊ <C-[>
+"ペア記号入力後カーソルを1つ戻す
+inoremap {} {}<left>
+inoremap [] []<left>
+inoremap <> <><left>
+inoremap () ()<left>
+inoremap '' ''<left>
+inoremap "" ""<left>
+inoremap <Bar><Bar> <Bar><Bar><left>
+nnoremap <F1> :QuickRun<CR> 
+"quickrun
+"quicqrunの実行結果を垂直分割で表示
+let g:quickrun_config={'*': {'split': 'vertical'}}
+" quickrunを強制終了
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+" 簡単起動
+cmap qr QuickRun
+cmap QR QuickRun
 
+" 簡単終了
+command! -nargs=0 Qx call CloseQuickRunWindow()
+function! CloseQuickRunWindow()
+    execute "normal \<c-c>\<c-w>jZZ"
+endfunction
+cmap qx Qx
 "###キー操作系
 "行 頭のカーソル移動で前後の行に移動できる様にする
-set whichwrap=b,s,h,l,<,>,[,],~
+"set whichwrap=b,s,h,l,<,>,[,],~
 "インサートモードでのカーソルキー形状変化(Macのみ)
 let &t_SI = "\e]50;CursorShape=1\x7"
 let &t_EI = "\e]50;CursorShape=0\x7"
+
+"### 拡張表示(ステータスライン)
+"ステータスラインの常時表示＆表示内容
+set laststatus=2
+
+"-----------------------------------------------
+"vim-plug
+"
+call plug#begin()
+Plug 'ntk148v/vim-horizon'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'itchyny/lightline.vim'            "ステータスバー
+Plug 'fatih/vim-go'                     "Goフォーマッタ
+Plug 'sheerun/vim-polyglot'             "多言語シンタックス・インデント調整
+Plug 'nathanaelkane/vim-indent-guides'  "インデント可視化
+Plug 'thinca/vim-quickrun'              "vim内でスクリプト実行
+call plug#end()
+
+" vim-horizonの設定
+" if you don't set this option, this color might not correct
+set termguicolors
+
+colorscheme horizon
+
+" lightline
+let g:lightline = {}
+let g:lightline.colorscheme = 'horizon'
+
+" or this line
+let g:lightline = {'colorscheme' : 'horizon'}
+
+"
+" NERDTree設定
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+let g:gitgutter_highlight_lines = 1 
