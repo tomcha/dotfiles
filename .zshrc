@@ -79,7 +79,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
 ### macとlinuxの環境毎の設定
 case ${OSTYPE} in
@@ -123,7 +123,8 @@ alias wget='curl -O'
 case ${OSTYPE} in
     darwin*)
         export GOROOT=/usr/local/opt/go/libexec
-        export GOPATH=$HOME/go #:$HOME/lgo
+        #export GOPATH=$HOME/go:$HOME/codes/repository #:$HOME/lgo
+        export GOPATH=$HOME/go
         export PATH="$PATH:$GOPATH/bin"
         ;;
     linux*)
@@ -131,6 +132,7 @@ case ${OSTYPE} in
         export PATH=$PATH:/usr/local/go/bin
         ;;
 esac
+export GO111MODULE=on
 #export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 ### peco
@@ -219,3 +221,5 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 #   %{${fg[green]}%}$(__git_ps1 " (%s)")
 #  %{${fg[yellow]}%}%~%{${reset_color}%}
 # [%n]$ '
+#
+alias vi="nvim"
