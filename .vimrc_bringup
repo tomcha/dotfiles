@@ -43,7 +43,10 @@ syntax on
 "検索文字をハイライトする
 set hls
 "colorscheme PaperColor
-"colorscheme molokai
+colorscheme molokai
+"colorscheme jellybeans
+"colorscheme hybrid
+"colorscheme Solarized
 "ダーク系<->ライト系カラースキーマ切替
 set background=dark
 "set background=light
@@ -140,7 +143,7 @@ set laststatus=2
 "vim-plug
 "
 call plug#begin()
-Plug 'ntk148v/vim-horizon'
+"Plug 'ntk148v/vim-horizon'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -153,9 +156,9 @@ call plug#end()
 
 " vim-horizonの設定
 " if you don't set this option, this color might not correct
-set termguicolors
+"set termguicolors
 
-colorscheme horizon
+"colorscheme horizon
 
 " lightline
 let g:lightline = {}
