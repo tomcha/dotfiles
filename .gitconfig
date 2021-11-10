@@ -14,3 +14,4 @@
     c = commit -m
     s = status
     co = checkout
+    com = checkout master
