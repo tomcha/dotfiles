@@ -30,6 +30,8 @@ set autoread
 set mouse-=a
 "検索時ヒット文字列をハイライトする
 set hlsearch
+"改行時オートインデント
+set ai
 
 "### vim-goコマンド自動実行
 "goファイル保存時にimportを自動補完してくれる
@@ -47,6 +49,7 @@ colorscheme molokai
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme Solarized
+"colorscheme tender
 "ダーク系<->ライト系カラースキーマ切替
 set background=dark
 "set background=light
